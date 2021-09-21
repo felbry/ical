@@ -24,7 +24,7 @@ const record = [
   {
     summary: '[加班]',
     start: '09-26',
-    duration: 3,
+    duration: 1,
   },
   {
     summary: '[放假]国庆节',
