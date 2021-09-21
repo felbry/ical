@@ -3,24 +3,51 @@ import { getVtimezoneComponent } from '@touch4it/ical-timezones'
 import moment from 'moment'
 
 const calendar = ical({
-  name: '国内节假日',
+  name: '国内节假日与加班',
 })
 calendar.timezone({
   name: 'FOO',
   generator: getVtimezoneComponent,
 })
-calendar.createEvent({
-  summary: '中秋节',
-  // start: moment.tz('2021-09-19 00:00', 'Asia/Shanghai').format(),
-  // end: moment.tz('2021-09-19 00:00', 'Asia/Shanghai').add(3, 'days').format(),
-  start: moment('2021-09-19 00:00'),
-  end: moment('2021-09-19 00:00').add(3, 'days'),
-  timezone: 'Asia/Shanghai',
+
+const record = [
+  {
+    summary: '[加班]',
+    start: '09-18',
+    duration: 1,
+  },
+  {
+    summary: '[放假]中秋节',
+    start: '09-19',
+    duration: 3,
+  },
+  {
+    summary: '[加班]',
+    start: '09-26',
+    duration: 3,
+  },
+  {
+    summary: '[放假]国庆节',
+    start: '10-01',
+    duration: 7,
+  },
+  {
+    summary: '[加班]',
+    start: '10-09',
+    duration: 1,
+  },
+]
+
+record.forEach((item) => {
+  calendar.createEvent({
+    summary: item.summary,
+    start: moment(`2021-${item.start} 00:00`),
+    end: moment(`2021-${item.start} 00:00`).add(
+      item.duration,
+      item.duration === 1 ? 'day' : 'days'
+    ),
+    timezone: 'Asia/Shanghai',
+  })
 })
-calendar.createEvent({
-  summary: '国庆节',
-  start: moment('2021-10-01 00:00'),
-  end: moment('2021-10-01 00:00').add(7, 'days'),
-  timezone: 'Asia/Shanghai',
-})
+
 calendar.saveSync('./calendar.ics')
