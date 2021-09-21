@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@touch4it/ical-timezones": "^1.8.1",
     "ical-generator": "^3.0.0",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33"
   }
 }
