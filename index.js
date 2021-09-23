@@ -1,4 +1,5 @@
 import ical from 'ical-generator'
+const { ICalAlarm } = ical
 import { getVtimezoneComponent } from '@touch4it/ical-timezones'
 import moment from 'moment'
 
@@ -49,5 +50,20 @@ record.forEach((item) => {
     timezone: 'Asia/Shanghai',
   })
 })
+
+const event = calendar.createEvent({
+  summary: '喝水提醒',
+  start: moment(`2021-09-23 10:00`),
+  end: moment(`2021-09-23 10:10`),
+  timezone: 'Asia/Shanghai',
+})
+const al = new ICalAlarm(
+  {
+    type: 'display',
+    description: '王晶晶该喝水啦',
+    trigger: moment(`2021-09-23 10:00`),
+  },
+  event
+)
 
 calendar.saveSync('./calendar.ics')
