@@ -57,13 +57,10 @@ const event = calendar.createEvent({
   end: moment(`2021-09-23 10:10`),
   timezone: 'Asia/Shanghai',
 })
-const al = new ICalAlarm(
-  {
-    type: 'display',
-    description: '王晶晶该喝水啦',
-    trigger: moment(`2021-09-23 10:00`),
-  },
-  event
-)
+event.createAlarm({
+  type: 'display',
+  description: '王晶晶该喝水啦',
+  trigger: moment(`2021-09-23 10:05`),
+})
 
 calendar.saveSync('./calendar.ics')
