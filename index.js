@@ -60,7 +60,7 @@ const event = calendar.createEvent({
 event.createAlarm({
   type: 'display',
   description: '王晶晶该喝水啦',
-  trigger: -600,
+  trigger: -1200,
 })
 
 calendar.saveSync('./calendar.ics')
