@@ -51,16 +51,16 @@ record.forEach((item) => {
   })
 })
 
-const event = calendar.createEvent({
-  summary: '喝水提醒',
-  start: moment(`2021-09-23 10:00`),
-  end: moment(`2021-09-23 10:10`),
-  timezone: 'Asia/Shanghai',
-})
-event.createAlarm({
-  type: 'display',
-  description: '王晶晶该喝水啦',
-  trigger: -1200,
-})
+// const event = calendar.createEvent({
+//   summary: '喝水提醒',
+//   start: moment(`2021-09-23 10:00`),
+//   end: moment(`2021-09-23 10:10`),
+//   timezone: 'Asia/Shanghai',
+// })
+// event.createAlarm({
+//   type: 'display',
+//   description: '王晶晶该喝水啦',
+//   trigger: -1200,
+// })
 
 calendar.saveSync('./calendar.ics')
